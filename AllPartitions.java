@@ -23,3 +23,8 @@ public class AllPartitions {
    }
 
 }
+//Output is:
++a+b+c
++a+bc
++ab+c
++abc
