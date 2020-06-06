@@ -24,9 +24,8 @@ public class AllPartitions {
 
 }
 
-// Output
+//Output is:
 +a+b+c
 +a+bc
 +ab+c
 +abc
-
