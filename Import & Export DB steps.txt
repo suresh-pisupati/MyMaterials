@@ -1,0 +1,86 @@
+C:\Documents and Settings\suresh>sqlplus
+
+SQL*Plus: Release 11.2.0.1.0 Production on Wed Feb 29 12:19:03 2012
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+C:\Documents and Settings\suresh>sqlplus "/as sysdba"
+
+SQL*Plus: Release 11.2.0.1.0 Production on Wed Feb 29 12:19:17 2012
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> create user palettegrpdev1 identified by password;
+
+User created.
+
+SQL> grant connect,resource,create table,create view,create synonym to user(palettegrpdev1);
+
+Grant succeeded.
+
+SQL> create or replace directory tmp1 as 'D:/';
+
+Directory created.
+
+SQL> grant dba to user(palettegrpdev1);
+
+Grant succeeded.
+
+SQL> grant all on directory tmp1 to user(palettegrpdev1);
+
+Grant succeeded.
+
+SQL> exit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+C:\Documents and Settings\suresh>d:
+
+D:\>impdp palettegroupivs/password directory= tmp1 dumpfile=export_palettegroupivs_20120118_53.dmp logfile=palettegroupdev1.log full=yes
+
+
+Import: Release 11.2.0.1.0 - Production on Wed Feb 29 12:26:20 2012
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Connected to: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+UDI-22303: operation generated ORACLE error 22303
+OCI-22303: type "SYS"."KU$_STATUS1020" not found
+
+
+D:\>impdp palettegrpdev1/password directory= tmp1 dumpfile=export_palettegrpdev1_20120118_53.dmp logfile=palettegrpdev1.log full=yes
+ ignore =yes
+
+****************************************************************************************************************************************
+
+For remapping the schema:
+
+****************************************************************************************************************************************
+
+impdp usr2/usr2 directory=dp_dir dumpfile=test.dmp logfile=imp.log remap_schema=oldschemaname:newschemaname
+
+
+
+
+
+******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+
+				Export Command
+
+
+******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+1. Connect as sysdba
+2. Enter the following command to create or replace directory
+	create or replace directory dump as <path to store dump>;
+3. Exit
+4. Use the expdp command to export the data base
+	expdp <username>/<password> directory=dump dumpfile = <name_of_dump_file> logfile=<logfile> 	content=all compression=all
+
