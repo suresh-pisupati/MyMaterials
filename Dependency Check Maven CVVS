@@ -1,0 +1,169 @@
+Create the dependency-check-report.html in the target directory.
+<!-- This profile will checks for CVVS and generates the report in the target directory  -->
+<project>
+    <build>
+        <plugins>
+            <plugin>
+              <groupId>org.owasp</groupId>
+              <artifactId>dependency-check-maven</artifactId>
+              <version>5.3.2</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+Example 2:
+Create an aggregated dependency-check report within the site.
+<!-- This profile will checks for CVVS and generates aggregate report in the target directory  -->
+<project>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>5.3.2</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>aggregate</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
+
+Example 3:
+Create the dependency-check-report.html and fail the build for CVSS greater than or equal to 8.
+<!-- This profile will checks for CVVS and fails the build if CVS score is >= 8  -->
+<project>
+    <build>
+        <plugins>
+            <plugin>
+              <groupId>org.owasp</groupId>
+              <artifactId>dependency-check-maven</artifactId>
+              <version>5.3.2</version>
+              <configuration>
+                  <failBuildOnCVSS>8</failBuildOnCVSS>
+              </configuration>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>check</goal>
+                      </goals>
+                  </execution>
+              </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+Example 4:
+Create the dependency-check-report.html and skip artifacts not bundled in distribution (Provided and Runtime scope).
+<!-- This profile will checks for CVVS and generates the report by skipping the 'Provided' and 'Runtime' scopes in the target directory  -->
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>5.3.2</version>
+                <configuration>
+                    <skipProvidedScope>true</skipProvidedScope>
+                    <skipRuntimeScope>true</skipRuntimeScope>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+Example 5:
+Create the dependency-check-report.html and use internal mirroring of CVE contents. Note, that the NVD JSON files and META files must also be mirrored; see https://nvd.nist.gov/vuln/data-feeds#JSON_FEED.
+
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>5.3.2</version>
+                <configuration>
+                    <cveUrlModified>http://internal-mirror.mycorp.com/nvdcve-1.0-modified.json.gz</cveUrlModified>
+                    <cveUrlBase>http://internal-mirror.mycorp.com/nvdcve-1.0-%d.json.gz</cveUrlBase>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+Example 6:
+Update the local cache of the NVD data from NIST without analyzing the dependencies.
+
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>5.3.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>update-only</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
+Example 7:
+Suppress false positives using multiple suppression files (E.g. a company-wide suppression file and a local project file).
+
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>5.3.2</version>
+                <configuration>
+                    <suppressionFiles>
+                        <suppressionFile>http://example.org/suppression.xml</suppressionFile>
+                        <suppressionFile>project-suppression.xml</suppressionFile>
+                    </suppressionFiles>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
