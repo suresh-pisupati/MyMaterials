@@ -16,6 +16,27 @@ public class FindDuplicateNumber {
       }
       return requ;
    }
+   
+   /*
+    * Solution is to use extra space by taking boolean array
+    * Take each element from the given array, and check for 'true' status
+    * in the boolean array. If it is true, then it is duplicate array.
+   */
+   //SC: O(n)         TC: O(n)
+   private static int findDupliateWithExtraSpace( int[] nums ) {
+      
+      //Take a boolean array of size equal to given array size
+      boolean[] aux = new boolean[nums.length];
+      //Iterate thru each element against boolean array
+      for(int i = 0; i <= nums.length; ++i ) {
+         int temp = nums[i];
+         if(aux[temp] == true) {
+            return temp;
+         }
+         aux[temp] = true;
+      }
+      return Integer.MAX_VALUE;
+   }
 
    public static void main( String[] args ) {
 
