@@ -1,0 +1,5 @@
+  In order to high-jack "localhost" and "127.0.0.1" addresses in firefox
+    1. in the address bar of firefox type: about:config
+    2. search for the "network.proxy.allow_hijacking_localhost"
+    3. by default the value will be false. double click to change it to true
+    4. check for the localhost site..
