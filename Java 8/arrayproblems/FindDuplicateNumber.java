@@ -44,3 +44,5 @@ public class FindDuplicateNumber {
       System.out.println( findDuplicate( input ) );
    }
 }
+
+// Output: prints 2
