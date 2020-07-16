@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
+ * This is the starting class of any SpringBoot application.
+ * 
  * @author Suresh
  */
 @SpringBootApplication
