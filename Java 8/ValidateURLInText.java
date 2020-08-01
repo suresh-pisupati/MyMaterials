@@ -1,7 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FindURLInText {
+public class ValidateURLInText {
 
 	private static final String URL_REGEX = "^(http(s?))\\:\\/\\/[0-9a-zA-Z]([-.\\w]*[0-9a-zA-Z])*(:(0-9)*)*(\\/?)([a-zA-Z0-9\\-\\.\\?\\,\\:\\'\\/\\\\\\+=&amp;%\\$#_]*)?$";
 	private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
