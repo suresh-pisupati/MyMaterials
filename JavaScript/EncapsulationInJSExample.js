@@ -22,4 +22,4 @@ function employee() {
 var emp = employee();
 console.log("First Name: " + emp.getFirstName()); // Prints First Name: suresh
 console.log("Last Name:   " + emp.getLastName()); // Prints Last Name:   kumar
-console.log("First Name using var :   " + emp.firstName); // First Name using var :   undefined
+console.log("First Name using emp obj:   " + emp.firstName); // First Name using emp obj :   undefined
