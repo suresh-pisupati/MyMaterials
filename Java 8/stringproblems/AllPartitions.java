@@ -1,25 +1,25 @@
-package org.suresh.dp;
+package stringproblems;
 
 public class AllPartitions {
 
-   public static void allPartitions1( String in ) {
+	public static void allPartitions1(String in) {
 
-      auxAllPartitions1( in, "" );
-   }
+		auxAllPartitions1(in, "");
+	}
 
-   private static void auxAllPartitions1( String in, String res ) {
+	private static void auxAllPartitions1(String in, String res) {
 
-      if( 0 == in.length() ) {
-         System.out.println( res );
-         return;
-      }
-      for( int i = 0; i < in.length(); ++i )
-         auxAllPartitions1( in.substring( i + 1 ), res + "+" + in.substring( 0, i + 1 ) );
-   }
+		if (0 == in.length()) {
+			System.out.println(res);
+			return;
+		}
+		for (int i = 0; i < in.length(); ++i)
+			auxAllPartitions1(in.substring(i + 1), res + "+" + in.substring(0, i + 1));
+	}
 
-   public static void main( String[] args ) {
+	public static void main(String[] args) {
 
-      allPartitions1( "abc" );
-   }
+		allPartitions1("abc");
+	}
 
 }

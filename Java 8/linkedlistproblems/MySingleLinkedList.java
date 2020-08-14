@@ -1,4 +1,4 @@
-package com.suresh.java891011features;
+package linkedlistproblems;
 
 public class MySingleLinkedList {
 
@@ -17,7 +17,8 @@ public class MySingleLinkedList {
 			headNode = newNode;
 			tailNode = newNode;
 		} else {
-			// newNode will be added after tail such that tail's next will point to newNode
+			// newNode will be added after tail such that tail's next will point
+			// to newNode
 			tailNode.nextNode = newNode;
 			// newNode will become new tail of the list
 			tailNode = newNode;

@@ -1,27 +1,27 @@
-package org.suresh.dp;
+package stringproblems;
 
 public class AllSequencesOfString {
 
-   public static void allSequences( String str ) {
+	public static void allSequences(String str) {
 
-      auxillary( str, 0, "" );
-   }
+		auxillary(str, 0, "");
+	}
 
-   private static void auxillary( String str, int index, String res ) {
+	private static void auxillary(String str, int index, String res) {
 
-      if( index == str.length() ) {
-         System.out.println( res );
-         return;
-      }
-      for( int i = 0; i < str.length(); ++i ) {
-         auxillary( str, index + 1, res + str.charAt( i ) );
-      }
+		if (index == str.length()) {
+			System.out.println(res);
+			return;
+		}
+		for (int i = 0; i < str.length(); ++i) {
+			auxillary(str, index + 1, res + str.charAt(i));
+		}
 
-   }
+	}
 
-   public static void main( String[] args ) {
+	public static void main(String[] args) {
 
-      allSequences( "abc" );
-   }
+		allSequences("abc");
+	}
 
 }

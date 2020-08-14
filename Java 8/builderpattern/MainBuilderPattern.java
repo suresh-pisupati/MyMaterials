@@ -1,4 +1,4 @@
-package com.suresh.builderpattern;
+package builderpattern;
 
 public class MainBuilderPattern {
 
