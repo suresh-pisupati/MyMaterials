@@ -1,4 +1,4 @@
-package org.suresh.java8;
+package com.suresh.java.arrays;
 
 import java.util.HashSet;
 import java.util.Set;

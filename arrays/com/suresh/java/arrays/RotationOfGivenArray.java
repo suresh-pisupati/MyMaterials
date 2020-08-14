@@ -1,4 +1,4 @@
-package org.suresh.java8;
+package com.suresh.java.arrays;
 
 public class RotationOfGivenArray {
 

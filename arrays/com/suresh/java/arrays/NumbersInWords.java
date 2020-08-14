@@ -1,4 +1,4 @@
-package com.suresh.java891011features;
+package com.suresh.java.arrays;
 
 /* Java program to print a given number in words.  
 The program handles till 9 digits numbers and  

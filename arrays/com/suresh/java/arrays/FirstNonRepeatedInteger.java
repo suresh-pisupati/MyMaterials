@@ -1,4 +1,4 @@
-package com.suresh.java891011features;
+package com.suresh.java.arrays;
 
 public class FirstNonRepeatedInteger {
 
@@ -10,11 +10,12 @@ public class FirstNonRepeatedInteger {
 			int j;
 			for (j = 0; j < length; j++) {
 				/*
-				 * Since the first element will be same, as we started both the arrays at same
-				 * index, we should ignore the first element check in both the arrays.
+				 * Since the first element will be same, as we started both the
+				 * arrays at same index, we should ignore the first element
+				 * check in both the arrays.
 				 * 
-				 * If the elements are same then break the condition and iterate with the next
-				 * index.
+				 * If the elements are same then break the condition and iterate
+				 * with the next index.
 				 */
 				if (i != j && givenArray[i] == givenArray[j]) {
 					break;
@@ -28,5 +29,9 @@ public class FirstNonRepeatedInteger {
 	}
 }
 
-Input : int[] givenArray = { 19, 24, 36, 47, 24, 19 };
-Output: First non repeating element is ->  36
+// Input:
+//
+// int[] givenArray = { 19, 24, 36, 47, 24, 19
+// };Output:
+// First non
+// repeating element is->36
