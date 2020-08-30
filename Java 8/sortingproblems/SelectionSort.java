@@ -3,9 +3,11 @@ package sortingproblems;
 /**
  * Idea of this algorithm is to have a sub array which is always sorted.
  * 
- * Algorithm: 1. Iterate through the given elements and pick the smallest
- * element and swap the positions. 2. Repeat the same process until all the
- * elements are sorted.
+ * Algorithm: <br>
+ * 1. Iterate through the given elements and <b>select</b> (and hence the name
+ * Selection sort) <br>
+ * the smallest element and swap the positions. <br>
+ * 2. Repeat the same process until all the elements are sorted.
  * 
  * Space Complexity is O(n^2) as it will scan for all the elements in the given
  * array
