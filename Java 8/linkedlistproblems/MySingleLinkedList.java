@@ -171,6 +171,38 @@ public class MySingleLinkedList {
 		return first == null;
 	}
 
+	/**
+	 * This method is used to determine whether loop exist in the given linked
+	 * list or not.
+	 * 
+	 * The alogrithm used is called <b>Floyd's</b> alogrithm<br>
+	 * <li>initialise two nodes for ex: slow and fast</li>
+	 * 
+	 * <pre>
+	 * such that slow will move one-by-one and fast will move by two
+	 * nodes.
+	 * </pre>
+	 * 
+	 * <li>when slow meets fast then loop exist</li> else no loop.
+	 * 
+	 * @return boolean value
+	 */
+	public boolean doesLoopExist() {
+
+		Node slow = first, fast = first;
+		do {
+			slow = slow.next;
+			if (fast == null || fast.next == null) {
+				return false;
+			}
+			fast = fast.next.next;
+		} while (slow != fast);
+		return true;
+	}
+
+	/**
+	 * To display the elements in the list
+	 */
 	public void display() {
 
 		Node currentNode = first;
@@ -188,27 +220,11 @@ public class MySingleLinkedList {
 	public static void main(String[] args) {
 
 		MySingleLinkedList list = new MySingleLinkedList();
-		list.addLast(1);
-		list.addLast(2);
-		list.addLast(3);
-		list.addLast(4);
-		list.addFirst(5);
 
 		// Displays the nodes present in the list
 		list.display();
-		list.removeFirst();
-		list.display();
-	}
-
-	private class Node {
-
-		private int value;
-		private Node next;
-
-		public Node(int value) {
-
-			this.value = value;
-			this.next = null;
-		}
+		// list.removeFirst();
+		// list.display();
+		System.out.println(list.doesLoopExist());
 	}
 }
