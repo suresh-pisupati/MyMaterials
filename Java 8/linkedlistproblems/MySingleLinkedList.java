@@ -164,6 +164,26 @@ public class MySingleLinkedList {
 		return null;
 	}
 
+	public Node reverse(Node node) {
+
+		// For example we have 3 nodes [10, 20, 30]
+		// Declare 3 nodes previous = null, current = node (10 in this case) and
+		// next = null
+		Node previous = null, current = node, next = null;
+		while (current != null) {
+			// store the current.next in next. Now next will be 20
+			next = current.next;
+			// point the current node to previous
+			current.next = previous;
+			// now the values are pointing to respective parameters. we have
+			// change the nodes
+			previous = current;
+			current = next;
+		}
+		node = previous;
+		return node;
+	}
+
 	/*
 	 * Checks whether first node is null if so the list is said to be empty
 	 */
@@ -201,6 +221,23 @@ public class MySingleLinkedList {
 	}
 
 	/**
+	 * 
+	 */
+	public int length() {
+
+		int count = 0;
+		if (isEmpty()) {
+			return 0;
+		}
+		Node node = first;
+		while (node != null) {
+			count++;
+			node = node.next;
+		}
+		return count;
+	}
+
+	/**
 	 * To display the elements in the list
 	 */
 	public void display() {
@@ -221,10 +258,16 @@ public class MySingleLinkedList {
 
 		MySingleLinkedList list = new MySingleLinkedList();
 
+		list.addLast(1);
+		list.addLast(2);
+		list.addLast(3);
+		list.addLast(4);
+		list.addLast(5);
 		// Displays the nodes present in the list
-		list.display();
-		// list.removeFirst();
 		// list.display();
-		System.out.println(list.doesLoopExist());
+		// list.removeFirst();
+		// list.reverse(list.first);
+		list.display();
+		System.out.println("Length ====>    " + list.length());
 	}
 }
