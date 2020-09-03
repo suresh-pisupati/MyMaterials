@@ -1,0 +1,28 @@
+Concurrency Using Executor Services and Executors.
+
+Executor and ExecutorService:
+--------------------------------------
+Executor Service are higher level replacement for Threads. Executors are capable of running tasks 
+in parallel.
+
+There are two methods which can be used for executing the tasks in parallel using Executors:
+	i. execute()	-> which performs the task asynchronously but has 'void' return type.
+						-> will take only runnable interface as a parameter
+	ii. submit()	-> which performs the task asynchronously but has return type 'Future' object
+						-> accepts runnable and callable interfaces as parameters
+
+
+Executors have to be stopped explicitly. Which can be done by using two methods
+	i. shutdown() -> which will wait for the current running task to be completed
+	ii. shutdownnow() -> interrupts all the running tasks and shut downs the executor immediately.
+	
+Callable interfaces are also functional interface similar to Runnable interface but
+	i. Callable interface will return Object
+	ii. throws exception if unable to compute the result.  
+	
+
+ScheduledExecutorService
+---------------------------------
+In order to run periodically run common tasks multiple times we user ScheduledExecutorService.
+
+The tasks can be run in parallel or all at a time.

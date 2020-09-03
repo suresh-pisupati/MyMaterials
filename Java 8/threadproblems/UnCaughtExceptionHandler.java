@@ -8,7 +8,7 @@ public class UnCaughtExceptionHandler {
 
 		NewThread newThread = new NewThread();
 		newThread.setName("New Thread");
-		newThread.setUncaughtExceptionHandler(new MyException());
+		newThread.setUncaughtExceptionHandler(new UnCaughtCustomException());
 		newThread.start();
 	}
 

@@ -2,15 +2,15 @@ package threadproblems;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 
-public class MyException implements UncaughtExceptionHandler {
+public class UnCaughtCustomException implements UncaughtExceptionHandler {
 
 	private String message;
 
-	public MyException() {
+	public UnCaughtCustomException() {
 
 	}
 
-	public MyException(String message) {
+	public UnCaughtCustomException(String message) {
 
 		this.message = message;
 	}
