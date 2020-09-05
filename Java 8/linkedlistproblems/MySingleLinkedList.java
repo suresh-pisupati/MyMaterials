@@ -11,7 +11,9 @@ import java.util.NoSuchElementException;
  * <li>removeLast()</li>
  * <li>indexOf()</li>
  * <li>contains()</li>
- * 
+ * <li>length()</li>
+ * <li>reverse()</li>
+ * <li>detectLoop()</li>
  */
 public class MySingleLinkedList {
 
@@ -64,6 +66,81 @@ public class MySingleLinkedList {
 	}
 
 	/**
+	 * This method will remove the element/item from the last index
+	 * 
+	 * @return
+	 */
+	public void removeLast() {
+
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		// If the list has only one element, then set first and last to null
+		if (first == last) {
+			first = last = null;
+			return;
+		}
+		// For example we have list like this
+		// [10 -> 20 -> 30]
+		// First we determine the previous node of the last node
+		// In this case it is 20
+		Node previousNode = getPreviousNode(last);
+		// Now the last is pointing to 30, we should make it to point to 20
+		last = previousNode;
+		last.next = null;
+	}
+
+	/**
+	 * Removes the first element from the list
+	 */
+	public void removeFirst() {
+
+		if (isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		// If the list has only one element, then set first and last to null
+		if (first == last) {
+			first = last = null;
+			return;
+		}
+		// For example we have list like this
+		// [10 -> 20 -> 30]
+		// First we need to have the node which points to (20) second node
+		Node current = first.next;
+		// Now we can remove the link of first
+		first.next = null;
+		// Finally we need to set the first pointing to the current node which
+		// is 20
+		first = current;
+	}
+
+	/**
+	 * This method will deletes the element from the given linked list at a
+	 * given position.
+	 * 
+	 * @param position
+	 */
+	public void removeElementAt(int position) {
+
+		// Lets say we have linkedlist as [1, 2, 3, 4, 5] and we want to remove
+		// element at 3 which is 3
+		Node previous = first;
+		// Iterate through the node till the position - 1 is reached.
+		int count = 1;
+		while (count < position - 1) {
+			previous = previous.next;
+			count++;
+		}
+		// Here the previous will have value of 2. Preserve this value.
+		// Current node will have the value of 3.
+		Node currentNode = previous.next;
+		// point the previous node (2) next to current node next (4)
+		previous.next = currentNode.next;
+		// Release the memory for gc
+		currentNode = null;
+	}
+
+	/**
 	 * Traverse through the entire list and as soon as we find the required
 	 * item/number return it.
 	 * 
@@ -97,55 +174,6 @@ public class MySingleLinkedList {
 		return indexOf(number) != -1;
 	}
 
-	/**
-	 * Removes the first element from the list
-	 */
-	public void removeFirst() {
-
-		if (isEmpty()) {
-			throw new NoSuchElementException();
-		}
-		// If the list has only one element, then set first and last to null
-		if (first == last) {
-			first = last = null;
-			return;
-		}
-		// For example we have list like this
-		// [10 -> 20 -> 30]
-		// First we need to have the node which points to (20) second node
-		Node current = first.next;
-		// Now we can remove the link of first
-		first.next = null;
-		// Finally we need to set the first pointing to the current node which
-		// is 20
-		first = current;
-	}
-
-	/**
-	 * This method will remove the element/item from the last index
-	 * 
-	 * @return
-	 */
-	public void removeLast() {
-
-		if (isEmpty()) {
-			throw new NoSuchElementException();
-		}
-		// If the list has only one element, then set first and last to null
-		if (first == last) {
-			first = last = null;
-			return;
-		}
-		// For example we have list like this
-		// [10 -> 20 -> 30]
-		// First we determine the previous node of the last node
-		// In this case it is 20
-		Node previousNode = getPreviousNode(last);
-		// Now the last is pointing to 30, we should make it to point to 20
-		last = previousNode;
-		last.next = null;
-	}
-
 	/*
 	 * To get the previous node of the given node, we need to iterate through
 	 * all the nodes starting from the first node. If the next node from the
@@ -164,12 +192,17 @@ public class MySingleLinkedList {
 		return null;
 	}
 
-	public Node reverse(Node node) {
+	/**
+	 * This method reverses the given linked list.
+	 * 
+	 * @return
+	 */
+	public Node reverse() {
 
 		// For example we have 3 nodes [10, 20, 30]
 		// Declare 3 nodes previous = null, current = node (10 in this case) and
 		// next = null
-		Node previous = null, current = node, next = null;
+		Node previous = null, current = first, next = null;
 		while (current != null) {
 			// store the current.next in next. Now next will be 20
 			next = current.next;
@@ -180,8 +213,8 @@ public class MySingleLinkedList {
 			previous = current;
 			current = next;
 		}
-		node = previous;
-		return node;
+		first = previous;
+		return first;
 	}
 
 	/*
@@ -221,7 +254,7 @@ public class MySingleLinkedList {
 	}
 
 	/**
-	 * 
+	 * This method will determine the length of the linked list.
 	 */
 	public int length() {
 
@@ -267,7 +300,13 @@ public class MySingleLinkedList {
 		// list.display();
 		// list.removeFirst();
 		// list.reverse(list.first);
+		// list.display();
+		// System.out.println("Length ====> " + list.length());
+		// System.out.println();
+		// list.reverse();
+		// System.out.println("After reversing ");
+		// list.display();
+		list.removeElementAt(3);
 		list.display();
-		System.out.println("Length ====>    " + list.length());
 	}
 }
