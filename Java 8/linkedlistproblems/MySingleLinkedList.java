@@ -254,6 +254,27 @@ public class MySingleLinkedList {
 	}
 
 	/**
+	 * This method will find the middle element of the linked list without
+	 * having multiple loops. The logic is<br>
+	 * to have two pointers <i>slow</i> and <i>fast</i> where <b>slow moves by
+	 * single step and fast moves by two nodes.</b> By the time the fast moves
+	 * to the last node slow will be at the middle element
+	 */
+	public void findMiddleElement() {
+
+		Node slow = first;
+		Node fast = first;
+
+		if (first != null) {
+			while (fast != null && fast.next != null) {
+				slow = slow.next;
+				fast = fast.next.next;
+			}
+			System.out.println("Middle Element is    " + slow.value);
+		}
+	}
+
+	/**
 	 * This method will determine the length of the linked list.
 	 */
 	public int length() {
@@ -296,6 +317,7 @@ public class MySingleLinkedList {
 		list.addLast(3);
 		list.addLast(4);
 		list.addLast(5);
+		list.addLast(6);
 		// Displays the nodes present in the list
 		// list.display();
 		// list.removeFirst();
@@ -306,7 +328,8 @@ public class MySingleLinkedList {
 		// list.reverse();
 		// System.out.println("After reversing ");
 		// list.display();
-		list.removeElementAt(3);
+		// list.removeElementAt(3);
+		list.findMiddleElement();
 		list.display();
 	}
 }
