@@ -1,6 +1,8 @@
 package linkedlistproblems;
 
+import java.util.HashSet;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 /**
  * Implementation of java linked list class with all the major operations like
@@ -141,6 +143,33 @@ public class MySingleLinkedList {
 	}
 
 	/**
+	 * This method will sort the given linked list. Idea is we need to have two
+	 * nodes where the first pointer will iterate through the entire linked list
+	 * and second pointer will compare the values and swap if necessary. Similar
+	 * to that of bubble sort.
+	 */
+	public void sort() {
+
+		Node currentNode = first, tempNode = null;
+		int temp;
+
+		while (currentNode != null) {
+
+			tempNode = currentNode.next;
+
+			while (tempNode != null) {
+				if (currentNode.value > tempNode.value) {
+					temp = currentNode.value;
+					currentNode.value = tempNode.value;
+					tempNode.value = temp;
+				}
+				tempNode = tempNode.next;
+			}
+			currentNode = currentNode.next;
+		}
+	}
+
+	/**
 	 * Traverse through the entire list and as soon as we find the required
 	 * item/number return it.
 	 * 
@@ -228,8 +257,8 @@ public class MySingleLinkedList {
 	 * This method is used to determine whether loop exist in the given linked
 	 * list or not.
 	 * 
-	 * The alogrithm used is called <b>Floyd's</b> alogrithm<br>
-	 * <li>initialise two nodes for ex: slow and fast</li>
+	 * The algorithm used is called <b>Floyd's</b> algorithm<br>
+	 * <li>initialize two nodes for ex: slow and fast</li>
 	 * 
 	 * <pre>
 	 * such that slow will move one-by-one and fast will move by two
@@ -292,6 +321,29 @@ public class MySingleLinkedList {
 	}
 
 	/**
+	 * This method will removes the duplicates in an unsorted linked list We
+	 * make use of Set which will not allow the duplicate elements in it.
+	 * Initially we will have previous node initialized to null and we need to
+	 * iterate through first node to last node and add elements to the Set. If a
+	 * duplicate element is encountered, previous.next will be pointed to
+	 * current.next else previous will be assigned with current node
+	 */
+	public void removeDuplicates() {
+
+		Node currentNode = first;
+		Node previousNode = null;
+		Set<Integer> hashSet = new HashSet<>();
+		while (currentNode != null) {
+			if (!hashSet.add(currentNode.value)) {
+				previousNode.next = currentNode.next;
+			} else {
+				previousNode = currentNode;
+			}
+			currentNode = currentNode.next;
+		}
+	}
+
+	/**
 	 * To display the elements in the list
 	 */
 	public void display() {
@@ -312,12 +364,10 @@ public class MySingleLinkedList {
 
 		MySingleLinkedList list = new MySingleLinkedList();
 
-		list.addLast(1);
 		list.addLast(2);
+		list.addLast(1);
 		list.addLast(3);
 		list.addLast(4);
-		list.addLast(5);
-		list.addLast(6);
 		// Displays the nodes present in the list
 		// list.display();
 		// list.removeFirst();
@@ -329,7 +379,9 @@ public class MySingleLinkedList {
 		// System.out.println("After reversing ");
 		// list.display();
 		// list.removeElementAt(3);
-		list.findMiddleElement();
+		// list.findMiddleElement();
+		// list.removeDuplicates();
+		list.sort();
 		list.display();
 	}
 }
