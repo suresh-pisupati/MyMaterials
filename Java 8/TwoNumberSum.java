@@ -13,8 +13,9 @@ public class TwoNumberSum {
 			int element = requiredSum - givenArray[index];
 			if (set.contains(element)) {
 				System.out.println("Required indexes are      " + (givenArray[index]) + " , " + element);
+			} else {
+				set.add(givenArray[index]);
 			}
-			set.add(givenArray[index]);
 		}
 	}
 
