@@ -89,7 +89,7 @@ public class BusinessRulesPersistenceConfiguration {
 
    private Map hibernateProperties() {
 
-      Resource resource = new ClassPathResource( "hibernate.properties" );
+      Resource resource = new ClassPathResource( "application.properties" );
 
       try {
          Properties properties = PropertiesLoaderUtils.loadProperties( resource );
