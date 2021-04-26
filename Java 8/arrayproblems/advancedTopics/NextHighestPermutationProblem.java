@@ -11,7 +11,6 @@ import java.util.Random;
  * the next element. Swap the two numbers. After Swapping the two numbers, the
  * remaining elements must be reversed to get the next highest permutation.
  * 
- * @author pksuresh
  *
  */
 public class NextHighestPermutationProblem {
