@@ -1,0 +1,7 @@
+/scratch/oipa/IBM/WebSphere/AppServer/profiles/AppSrv01/bin
+
+./startNode.sh
+
+/scratch/oipa/IBM/WebSphere/AppServer/profiles/Dmgr01/bin
+
+./startManager.sh

@@ -16,6 +16,7 @@ import java.util.Set;
  * <li>length()</li>
  * <li>reverse()</li>
  * <li>detectLoop()</li>
+ * <li>sort()</li>
  */
 public class MySingleLinkedList {
 
