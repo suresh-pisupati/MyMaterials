@@ -31,7 +31,9 @@ public class SingleStackMaximumElement {
      * such that it will keep track of previous maximum number.<br>
      * If the stack is empty then the maxElement is the given number.<br>
      * If the given number is less than the maxElement, then simply push into
-     * the stack.
+     * the stack.<br>
+     * TC: O(1)<br>
+     * SC: O(1)
      * 
      * @param number,
      *            which is to be pushed into the stack.
@@ -59,8 +61,9 @@ public class SingleStackMaximumElement {
      * In this case we should return the maxElement before performing the above
      * operation.<br>
      * If the result (of pop operation) is less than the maxElement, simply
-     * return the poped element
-     * 
+     * return the poped element.<br>
+     * TC: 0(1) <br>
+     * SC:O(1)
      * 
      * @return temp, the poped element
      */
@@ -78,7 +81,9 @@ public class SingleStackMaximumElement {
 
     /**
      * Simply return the maxElement which will be determined while performing
-     * the <b>push</b> operation.
+     * the <b>push</b> operation.<br>
+     * TC: O(1)<br>
+     * SC: O(1)
      * 
      * @return maxElement, integer which is greater/maximum number in the stack
      */
