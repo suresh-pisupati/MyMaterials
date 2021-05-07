@@ -32,6 +32,7 @@ public class CompletableFutureExample {
 
 	private static int getSquare(int number) {
 
+		System.out.println("number is    " + number);
 		return number * number;
 	}
 }
