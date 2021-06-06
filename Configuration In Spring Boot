@@ -1,0 +1,2 @@
+to activate the desired profile:
+    spring.profiles.active = <name of the env> (for eg: dev/production/test)
