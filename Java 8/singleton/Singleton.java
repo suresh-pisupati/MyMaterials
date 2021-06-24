@@ -67,7 +67,17 @@ public class Singleton {
 	/**
 	 * This is the last and efficient approach of creating a singleton instance.
 	 * 
-	 *
+	 * Calling of singleton class using enum is:<br>
+	 * EnumSingleton.INSTANCE;<br>
+	 * Once the above is executed internally, it will converted something like
+	 * this <br>
+	 * <blockquote> public enum EnumSingleton { <br>
+	 * INSTANCE; <br>
+	 * public final static MySingleton INSTANCE = new MySingleton(); <br>
+	 * private EnumSingleton() {
+	 * 
+	 * } <br>
+	 * } </blockquote>
 	 */
 	public enum EnumSingleton {
 		INSTANCE;
