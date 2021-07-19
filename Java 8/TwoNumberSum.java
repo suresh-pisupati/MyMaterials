@@ -1,4 +1,7 @@
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class TwoNumberSum {
@@ -17,14 +20,38 @@ public class TwoNumberSum {
 				set.add(givenArray[index]);
 			}
 		}
+
+	}
+
+	/**
+	 * Method to determine the indexes of the elements who values upon adding is
+	 * equal to the required sum
+	 * 
+	 * @param givenArray
+	 * @param requiredSum
+	 * @return
+	 */
+	public static int[] getPair2(int[] givenArray, int requiredSum) {
+
+		int[] result = new int[2];
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int index = 0; index < givenArray.length; index++) {
+			int target = requiredSum - givenArray[index];
+			if (map.containsKey(target)) {
+				return new int[] { map.get(target), index };
+			} else {
+				map.put(givenArray[index], index);
+			}
+		}
+		return result;
 	}
 
 	public static void main(String[] args) {
 
-		int[] givenArray = { 1, 5, 3, 2, 6, 9, 4 };
-		int requiredSum = 7;
-		getPair(givenArray, requiredSum);
-
+		int[] givenArray = new int[] { 2, 7, 11, 15 };
+		int requiredSum = 9;
+		int[] result = getPair2(givenArray, requiredSum);
+		System.out.println(Arrays.toString(result));
 	}
 
 }
