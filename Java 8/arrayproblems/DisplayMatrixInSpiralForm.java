@@ -88,6 +88,52 @@ public class DisplayMatrixInSpiralForm {
 		System.out.println(builder);
 	}
 
+	private void displayMatrixInVerticalSpiralForm() {
+
+		StringBuilder builder = new StringBuilder();
+
+		int top = 0;
+		int bottom = matrix.length - 1;
+		int left = 0;
+		int right = matrix[0].length - 1;
+
+		while (top <= bottom && left <= right) {
+
+			// Print top to bottom
+			for (int index = top; index <= bottom; index++) {
+				builder.append(matrix[index][left] + "\t");
+			}
+			// Since first column is printed, increment left
+			left++;
+
+			// Print left to right
+			for (int index = left; index <= right; index++) {
+				builder.append(matrix[bottom][index] + "\t");
+			}
+			// Since the bottom row is printed, decrement bottom
+			bottom--;
+
+			if (top < bottom) {
+				// Print bottom to top
+				for (int index = bottom; index >= top; index--) {
+					builder.append(matrix[index][right] + "\t");
+				}
+				// Since last column is printed, decrement right
+				right--;
+			}
+
+			if (left <= right) {
+				// Print right to left
+				for (int index = right; index >= left; index--) {
+					builder.append(matrix[top][index] + "\t");
+				}
+				// Since the first row is printed, increment row
+				top++;
+			}
+		}
+		System.out.println(builder);
+	}
+
 	private void displayMatrix() {
 
 		for (int i = 0; i < ROW_SIZE; i++) {
@@ -104,7 +150,10 @@ public class DisplayMatrixInSpiralForm {
 		DisplayMatrixInSpiralForm displayMatrixInSprialForm = new DisplayMatrixInSpiralForm();
 		displayMatrixInSprialForm.populateMatrix();
 		displayMatrixInSprialForm.displayMatrix();
+		System.out.println();
 		displayMatrixInSprialForm.displayMatrixInSpiralForm();
+		System.out.println();
+		displayMatrixInSprialForm.displayMatrixInVerticalSpiralForm();
 	}
 
 }
