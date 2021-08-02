@@ -1,24 +1,20 @@
 package arrayproblems;
 
-import java.util.Arrays;
-
 public class FirstPositiveMissingNumber {
 
 	private static void findPositiveMissingNumber(int[] givenArray) {
 
-		Arrays.sort(givenArray);
-		int minimumNumber = 1;
+		int expectedResult = (givenArray.length * (givenArray.length + 1)) / 2;
+		int actualResult = 0;
 		for (int index = 0; index < givenArray.length; index++) {
-			if (givenArray[index] == minimumNumber) {
-				minimumNumber++;
-			}
+			actualResult = actualResult + givenArray[index];
 		}
-		System.out.println("Missing Number is  " + minimumNumber);
+		System.out.println("Missing Number is  " + (expectedResult - actualResult));
 	}
 
 	public static void main(String[] args) {
 
-		int[] givenArray = { 3, 4, -1, 1 };
+		int[] givenArray = { 1 };
 		findPositiveMissingNumber(givenArray);
 	}
 
