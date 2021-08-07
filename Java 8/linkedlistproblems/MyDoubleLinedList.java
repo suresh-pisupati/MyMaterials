@@ -8,14 +8,14 @@ package linkedlistproblems;
  */
 class InternalNode {
 
-    public int data;
-    public InternalNode previousNode;
-    public InternalNode nextNode;
+	public int data;
+	public InternalNode previousNode;
+	public InternalNode nextNode;
 
-    public InternalNode(int data) {
+	public InternalNode(int data) {
 
-	this.data = data;
-    }
+		this.data = data;
+	}
 }
 
 /**
@@ -26,110 +26,114 @@ class InternalNode {
  */
 public class MyDoubleLinedList {
 
-    private InternalNode headNode, tailNode;
+	private InternalNode headNode, tailNode;
 
-    public MyDoubleLinedList() {
+	/**
+	 * The method to add the given number as the last node
+	 * 
+	 * @param number
+	 */
+	public void addLast(int number) {
 
-    }
-
-    /**
-     * The method to add the given number as the last node
-     * 
-     * @param number
-     */
-    public void addLast(int number) {
-
-	InternalNode newNode = new InternalNode(number);
-	if (headNode == null) {
-	    headNode = tailNode = newNode;
-	} else {
-	    // establish a link to the newNode using the tailNode.nextNode as
-	    // nextNode is the pointer
-	    tailNode.nextNode = newNode;
-	    // New node's previous node needs to pointed to the tailNode
-	    newNode.previousNode = tailNode;
-	    // tailNode should be pointed to the new node
-	    tailNode = newNode;
-	    // tailNode.nextNode should be null
-	    tailNode.nextNode = null;
+		InternalNode newNode = new InternalNode(number);
+		if (headNode == null) {
+			headNode = tailNode = newNode;
+		} else {
+			// establish a link to the newNode using the tailNode.nextNode as
+			// nextNode is the pointer
+			tailNode.nextNode = newNode;
+			// New node's previous node needs to pointed to the tailNode
+			newNode.previousNode = tailNode;
+			// tailNode should be pointed to the new node
+			tailNode = newNode;
+			// tailNode.nextNode should be null
+			tailNode.nextNode = null;
+		}
 	}
-    }
 
-    /**
-     * The method to add the number as the first node
-     * 
-     * @param number
-     */
-    public void addFirst(int number) {
-	InternalNode newNode = new InternalNode(number);
-	if (headNode == null) {
-	    headNode = tailNode = newNode;
-	} else {
-	    // headNode is the first element. Its previousNode is null as of
-	    // now. We need to point previousNode to the newNode.
-	    headNode.previousNode = newNode;
-	    // newNode next should be pointed to headNode. As of now headNode
-	    // has previous data only
-	    newNode.nextNode = headNode;
-	    // Now the headNode should be pointed to newNode.
-	    headNode = newNode;
-	    // Now the newNode is the headNode, its previousNode should be
-	    // pointed to null
-	    newNode.previousNode = null;
+	/**
+	 * The method to add the number as the first node
+	 * 
+	 * @param number
+	 */
+	public void addFirst(int number) {
+		InternalNode newNode = new InternalNode(number);
+		if (headNode == null) {
+			headNode = tailNode = newNode;
+		} else {
+			// headNode is the first element. Its previousNode is null as of
+			// now. We need to point previousNode to the newNode.
+			headNode.previousNode = newNode;
+			// newNode next should be pointed to headNode. As of now headNode
+			// has previous data only
+			newNode.nextNode = headNode;
+			// Now the headNode should be pointed to newNode.
+			headNode = newNode;
+			// Now the newNode is the headNode, its previousNode should be
+			// pointed to null
+			newNode.previousNode = null;
 
+		}
 	}
-    }
 
-    public void delete(int element) {
+	public void delete(int element) {
 
-	InternalNode requiredNode = getNodeOfElement(element);
-	requiredNode.previousNode.nextNode = requiredNode.nextNode;
-	requiredNode.nextNode.previousNode = requiredNode.previousNode;
-	requiredNode = null;
-    }
-
-    private InternalNode getNodeOfElement(int element) {
-
-	InternalNode currentNode = headNode;
-	while (currentNode != null) {
-	    if (currentNode.data == element) {
-		return currentNode;
-	    }
-	    currentNode = currentNode.nextNode;
+		InternalNode requiredNode = getNodeOfElement(element);
+		// if the node to be deleted is the first node, make the head to point
+		// to next node
+		if (headNode != null) {
+			headNode = requiredNode.nextNode;
+		}
+		if (requiredNode.previousNode != null) {
+			requiredNode.previousNode.nextNode = requiredNode.nextNode;
+		}
+		if (requiredNode.nextNode != null) {
+			requiredNode.nextNode.previousNode = requiredNode.previousNode;
+		}
 	}
-	return null;
-    }
 
-    /**
-     * The method to display the custom double linked list
-     */
-    public void display() {
-	InternalNode currentNode = headNode;
-	if (headNode == null) {
-	    System.out.println("List is empty");
-	} else {
-	    while (currentNode != null) {
-		System.out.print(currentNode.data + " ");
-		currentNode = currentNode.nextNode;
-	    }
-	    System.out.println();
+	private InternalNode getNodeOfElement(int element) {
+
+		InternalNode currentNode = headNode;
+		while (currentNode != null) {
+			if (currentNode.data == element) {
+				return currentNode;
+			}
+			currentNode = currentNode.nextNode;
+		}
+		return null;
 	}
-    }
 
-    public static void main(String[] args) {
+	/**
+	 * The method to display the custom double linked list
+	 */
+	public void display() {
+		InternalNode currentNode = headNode;
+		if (headNode == null) {
+			System.out.println("List is empty");
+		} else {
+			while (currentNode != null) {
+				System.out.print(currentNode.data + " ");
+				currentNode = currentNode.nextNode;
+			}
+			System.out.println();
+		}
+	}
 
-	MyDoubleLinedList dList = new MyDoubleLinedList();
-	dList.addLast(1);
-	dList.addLast(2);
-	dList.addLast(3);
-	dList.addLast(4);
-	dList.addLast(5);
+	public static void main(String[] args) {
 
-	dList.display();// displays: 1 2 3 4 5
-	dList.addFirst(6);
-	dList.display();// displays: 6 1 2 3 4 5
-	dList.delete(4);
-	dList.display();
-    }
+		MyDoubleLinedList dList = new MyDoubleLinedList();
+		dList.addLast(1);
+		dList.addLast(2);
+		dList.addLast(3);
+		dList.addLast(4);
+		dList.addLast(5);
+
+		dList.display();// displays: 1 2 3 4 5
+		dList.addFirst(6);
+		dList.display();// displays: 6 1 2 3 4 5
+		dList.delete(6);
+		dList.display();
+	}
 
 }
