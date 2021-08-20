@@ -1,20 +1,18 @@
-package org.suresh.java8;
-
 import java.io.Serializable;
 
 public class Employee implements Serializable {
 
    private static final long serialVersionUID = 1L;
 
-   private int               sNo, age;
-   private String            sex, firstName, lastName;
+   private int sNo, age;
+   private String sex, firstName, lastName;
 
    // Default Constructor
    public Employee() {
 
    }
 
-   public Employee( int sNo, int age, String sex, String firstName, String lastName ) {
+   public Employee(int sNo, int age, String sex, String firstName, String lastName) {
 
       this.sNo = sNo;
       this.age = age;
@@ -28,7 +26,7 @@ public class Employee implements Serializable {
       return sNo;
    }
 
-   public void setsNo( int sNo ) {
+   public void setsNo(int sNo) {
 
       this.sNo = sNo;
    }
@@ -38,7 +36,7 @@ public class Employee implements Serializable {
       return age;
    }
 
-   public void setAge( int age ) {
+   public void setAge(int age) {
 
       this.age = age;
    }
@@ -48,7 +46,7 @@ public class Employee implements Serializable {
       return sex;
    }
 
-   public void setSex( String sex ) {
+   public void setSex(String sex) {
 
       this.sex = sex;
    }
@@ -58,7 +56,7 @@ public class Employee implements Serializable {
       return firstName;
    }
 
-   public void setFirstName( String firstName ) {
+   public void setFirstName(String firstName) {
 
       this.firstName = firstName;
    }
@@ -68,7 +66,7 @@ public class Employee implements Serializable {
       return lastName;
    }
 
-   public void setLastName( String lastName ) {
+   public void setLastName(String lastName) {
 
       this.lastName = lastName;
    }

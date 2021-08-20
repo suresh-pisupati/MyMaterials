@@ -1,5 +1,3 @@
-package com.suresh.java891011features;
-
 public interface GreetingsInterface {
 
 	/*
