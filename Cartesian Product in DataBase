@@ -1,0 +1,8 @@
+Query to find the Nth highest salary in the given employee table
+===========================================================================
+
+SELECT * FROM Employee Emp1 
+
+               WHERE ( N - 1 )= ( SELECT COUNT( DISTINCT( Emp2.Salary ) ) 
+
+                                   FROM Employee Emp2 WHERE Emp2.Salary > Emp1.Salary ); 
