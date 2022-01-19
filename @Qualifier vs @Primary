@@ -1,0 +1,50 @@
+@Qualifier is used at @Component level. We cannot use this annotation at @Configuration.
+When there are multiple beans of same type to avoid the ambiguity for creating the object, @Qualifier is used.
+
+For ex:
+
+public interface Bike {
+  public void model();
+}
+
+@Qualifier("heroBike")
+public class HeroBike implements Bike {
+  public void model() {
+    ....
+  }
+}  
+
+@Qualifier("hondaBike")
+public class HondaBike implements Bike {
+  public void model() {
+    ....
+  }
+}  
+
+@Component
+public class BikeTest {
+
+  @Autowired
+  private Bike bike; //Here spring container will throw error. Because there is ambiguity for creating the type of object. To avoid this @Qualifier is used
+  
+  @Autowired
+  @Qualifier( "heroBike" )
+  private Bike bike;
+}
+
+@Primary is used to remove the ambigutiy for creating the same objects at the configuration level
+
+@Cofiguration
+public class BikeTest {
+
+  @Bean
+  @Primary
+  private Bike getBike() {
+    return new HondaBike();
+  }
+  
+  @Bean
+  private Bike getBike() {
+    return new HeroBike();
+  }
+}
