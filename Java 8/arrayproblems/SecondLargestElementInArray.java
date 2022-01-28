@@ -24,6 +24,10 @@ public class SecondLargestElementInArray {
 			if (element > firstMax) {
 				secondMax = firstMax;
 				firstMax = element;
+			//In the below statement the first condition is required to check if the current element is greater than second largest element
+			//For ex: 10, 12, 11
+			//The second condition will check and make sure the current element is not the highest
+			//For ex: 10, 12, 12, 11
 			} else if (element > secondMax && element != firstMax) {
 				secondMax = element;
 			}
