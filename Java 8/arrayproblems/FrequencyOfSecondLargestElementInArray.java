@@ -16,8 +16,6 @@ public class FrequencyOfSecondLargestElementInArray {
 	 * count.
 	 * 
 	 * @param givenArray
-	 * 			@return, an integer, which is second largest element in the
-	 *            given array
 	 */
 	private static void getFrequencyOfSecondLargestElement(int[] givenArray) {
 
