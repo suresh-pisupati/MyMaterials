@@ -73,7 +73,7 @@ public class Singleton {
 	 * this <br>
 	 * <blockquote> public enum EnumSingleton { <br>
 	 * INSTANCE; <br>
-	 * public final static MySingleton INSTANCE = new MySingleton(); <br>
+	 * public final static EnumSingleton INSTANCE = new EnumSingleton(); <br>
 	 * private EnumSingleton() {
 	 * 
 	 * } <br>
