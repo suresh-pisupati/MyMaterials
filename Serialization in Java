@@ -1,0 +1,38 @@
+Serialization
+============================
+1. Serialization is the process of preserving the state of the class so that we can transmit over the network either to persist or write to a file.
+
+2. For Serialization we user writeObject of ObjectOutputStream and deserialization we use readObject of ObjectInputStream class
+
+3. We need to implement Serializable interface to acheive Serialization. This is a marker interface
+
+4. String class by default implement Serializable interface
+
+5. If a class implements Serializable then all its subclasses will also be Serializable  (IS-A)
+
+		class A implements Serializable {
+		
+		}
+		
+		class B extends A { // This class will also be Serialized
+		
+		}
+
+6. If a class has a reference which implements Serializable interface, then all the classes should implement Serializable (HAS-A)
+
+		class Address {
+		
+		}
+		
+		class Employee implements Serializable{	
+		
+			private Address a;// This class should implement Serializable. Otherwise NotSerializableException will be thrown
+		}
+
+7. If there are any static fields in the class then they are not Serialized as they are not part of state of the class
+
+8. In case of collections, all the objects must be Serialized
+
+9. If we do not want any field to be serialized, we need to use 'transient' key word
+
+10. All the primitive datatypes and objects will be serialized.	
