@@ -25,8 +25,10 @@ public class CompletableFutureExample {
 		// This example squares the given numbers and returns the individual
 		// values.
 		List<Integer> numbers = Arrays.asList(5, 9, 14);
-		numbers.stream().map((n) -> CompletableFuture.supplyAsync(() -> getSquare(n))).map(t -> t.join())
-				.forEach(System.out::println);
+		numbers.stream().map((n) -> CompletableFuture.supplyAsync(() -> getSquare(n))
+				    .thenApply(i -> i + i)))
+				    .map(t -> t.join())
+				    .forEach(System.out::println);
 
 	}
 
