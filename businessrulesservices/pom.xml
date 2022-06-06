@@ -35,11 +35,11 @@
 		</dependency>
 
 		<!-- For configuring Oracle data base driver -->
-		<!-- <dependency>
-			<groupId>com.oracle</groupId>
+		<dependency>
+			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
-			<version>12.2.0.1</version>
-		</dependency> -->
+			<version>19.3.0.0</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.github.javadev/underscore -->
 		<dependency>
