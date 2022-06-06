@@ -10,16 +10,16 @@ import com.suresh.ivs.service.IVSService;
 @RestController
 public class IVSController {
 
-   /*
-    * Service call to fetch the version details
-    */
-   @Autowired
-   private IVSService ivsService;
+	/*
+	 * Service call to fetch the version details
+	 */
+	@Autowired
+	private IVSService ivsService;
 
-   @RequestMapping("/version/{businessRuleGuid}")
-   public Object fetchAllBusinessRulesAndVersionsByGuid( @PathVariable String businessRuleGuid ) {
+	@RequestMapping("/version/{businessRuleGuid}")
+	public Object fetchAllBusinessRulesAndVersionsByGuid(@PathVariable String businessRuleGuid) {
 
-      return ivsService.findVersionByRuleGuid( businessRuleGuid );
-   }
+		return ivsService.findVersionByRuleGuid(businessRuleGuid);
+	}
 
 }

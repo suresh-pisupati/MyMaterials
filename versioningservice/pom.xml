@@ -10,7 +10,8 @@
 	</parent>
 	<groupId>com.suresh</groupId>
 	<artifactId>versionsservice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
+	<packaging>war</packaging>
 	<name>paletteconfigivs</name>
 	<description>ivs micro services</description>
 	<properties>
@@ -36,16 +37,11 @@
 		
 		<!-- For configuring Oracle data base driver -->
 		<dependency>
-			<groupId>com.oracle</groupId>
+			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
-			<version>12.2.0.1</version>
+			<version>19.3.0.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>

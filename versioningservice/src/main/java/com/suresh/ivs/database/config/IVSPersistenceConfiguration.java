@@ -31,36 +31,39 @@ import com.suresh.ivs.database.entities.VersionEntity;
 @EnableJpaRepositories(basePackages = "com.suresh.ivs.repository", entityManagerFactoryRef = "ivsEntityManager", transactionManagerRef = "ivsTransactionManager")
 public class IVSPersistenceConfiguration {
 
-   @Bean
-   @ConfigurationProperties(prefix = "spring.ivs.datasource")
-   public DataSource ivsDataSource() {
+	@Bean
+	@ConfigurationProperties(prefix = "spring.datasource")
+	public DataSource ivsDataSource() {
 
-      return DataSourceBuilder.create().build();
-   }
+		return DataSourceBuilder.create().build();
+	}
 
-   @Bean(name = "ivsEntityManager")
-   public LocalContainerEntityManagerFactoryBean businessRulesEntityManagerFactory( EntityManagerFactoryBuilder builder ) {
+	@Bean(name = "ivsEntityManager")
+	public LocalContainerEntityManagerFactoryBean businessRulesEntityManagerFactory(
+			EntityManagerFactoryBuilder builder) {
 
-      return builder.dataSource( ivsDataSource() ).properties( applicationProperties() ).packages( VersionEntity.class ).persistenceUnit( "versionPU" ).build();
-   }
+		return builder.dataSource(ivsDataSource()).properties(applicationProperties()).packages(VersionEntity.class)
+				.persistenceUnit("versionPU").build();
+	}
 
-   @Bean(name = "ivsTransactionManager")
-   public PlatformTransactionManager businessRulesTransactionManager( @Qualifier("ivsEntityManager") EntityManagerFactory entityManagerFactory ) {
+	@Bean(name = "ivsTransactionManager")
+	public PlatformTransactionManager businessRulesTransactionManager(
+			@Qualifier("ivsEntityManager") EntityManagerFactory entityManagerFactory) {
 
-      return new JpaTransactionManager( entityManagerFactory );
-   }
+		return new JpaTransactionManager(entityManagerFactory);
+	}
 
-   private Map applicationProperties() {
+	private Map applicationProperties() {
 
-      Resource resource = new ClassPathResource( "application.properties" );
+		Resource resource = new ClassPathResource("application.properties");
 
-      try {
-         Properties properties = PropertiesLoaderUtils.loadProperties( resource );
-         System.out.println( "key:   " + properties );
-         return properties.entrySet().stream().collect( Collectors.toMap( e -> e.getKey().toString(), e -> e.getValue() ) );
-      }
-      catch( IOException e ) {
-         return new HashMap();
-      }
-   }
+		try {
+			Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+			System.out.println("key:   " + properties);
+			return properties.entrySet().stream()
+					.collect(Collectors.toMap(e -> e.getKey().toString(), e -> e.getValue()));
+		} catch (IOException e) {
+			return new HashMap();
+		}
+	}
 }

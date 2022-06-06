@@ -1,0 +1,47 @@
+#server.port=8081
+#
+#spring.application.name=Connection Service
+#
+## for connecting to IVS data base
+#spring.ivs.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+#spring.ivs.datasource.jdbcUrl=jdbc:oracle:thin:@localhost:1521:orcl
+#spring.ivs.datasource.username=oipa_ivs
+#spring.ivs.datasource.password=password
+#
+## Spring by default uses org.springframework.boot.orm.jpa.SpringNamingStrategy which splits camel case names with underscore.
+## if we do not use these parameters spring boot engine will use the table names with _. 
+## Hence we will run into table or view does not exist issue.
+#spring.jpa.hibernate.naming.physical-strategy= org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#spring.jpa.hibernate.naming.implicit-strategy= org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+#
+## Dialects for connecting to databases.
+## Avoiding this configuration will leads to following exception while starting the server
+## Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+#spring.jpa.database-platform=org.hibernate.dialect.OracleDialect
+#spring.jpa.show-sql=false
+#spring.jpa.hibernate.ddl-auto=create
+
+########################################################################################################################
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: Connection Service
+ 
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: create
+
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+
+  datasource:
+    username: oipa_ivs
+    password: password
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    jdbcUrl: jdbc:oracle:thin:@localhost:1521:orcl
