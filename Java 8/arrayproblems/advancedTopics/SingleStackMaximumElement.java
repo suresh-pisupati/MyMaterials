@@ -57,7 +57,7 @@ public class SingleStackMaximumElement {
      * If the result (of poping the element) is greater than maxElement, then it
      * is a special element which contains the information about previous
      * maxElement. So update the maxElement by:<br>
-     * maxElement = 2 * result (of poped element) - maxElement<br>
+     * maxElement = 2 * maxElement - result (of poped element)<br>
      * In this case we should return the maxElement before performing the above
      * operation.<br>
      * If the result (of pop operation) is less than the maxElement, simply
