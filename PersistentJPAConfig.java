@@ -33,7 +33,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 //In order to let spring container to know which data sources refer to which repository, we
 //use this annotation.
 //For each jpa data source, we need to define a configuration
-@EnableJpaRepositories(entityManagerFactoryRef = "oipaEntityManagerFactorRef", transactionManagerRef = "oipaTransactionManagerRef", basePackages = {
+@EnableJpaRepositories(entityManagerFactoryRef = "oipaEntityManager", transactionManagerRef = "oipaTransactionManager", basePackages = {
 		"org.springdemo.multiple.datasources.repository.domains" })
 
 //This annotation is used to define the path for the properties file
