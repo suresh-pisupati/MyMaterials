@@ -32,6 +32,7 @@ public class ArrayManipulation {
 
     }
 
+    //This is for running the code
     public static void main(String[] args) {
 
 	findPosition(new int[] { 4, 2, 3, 1 });
